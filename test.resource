@@ -1,5 +1,6 @@
 *** Settings ***
 Library         ./kw/keywords.py
+Library         aszokemodule
 
 *** Keywords ***
 

@@ -1,0 +1,8 @@
+{
+    "python.terminal.activateEnvironment": false,
+    "robot.pythonpath": [
+        "${workspaceFolder}",
+        "${workspaceFolder}/aszokepackage",
+        "${workspaceFolder}/venv/lib/python3.10/site-packages"
+    ]
+}
