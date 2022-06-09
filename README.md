@@ -11,11 +11,13 @@ Let's see how to set your development environment to be able to do so.
 - Clone the Repository
 - Navigate to the repository root folder
 - Create a new virtual environment and activate it (It is important to create it in the repository root or else VS Code seems to not find it)
+- The last line will add the path to the Python interpreter in the newly created virtual environment to `.vscode/settings.json` so that dependencies installed by pip are found by the Robot Framework Language Server
 
 ```
-python3 -m venv venv
-echo "*" > ./venv/.gitignore
-source ./venv/bin/activate
+python3 -m venv .venv
+echo "*" > ./.venv/.gitignore
+source ./.venv/bin/activate
+jq --arg pythonpath "$(find . -type d -name site-packages | rev | cut -f1-4 -d"/" | rev)" '.["robot.pythonpath"] += ["${workspaceFolder}/"+$pythonpath]' .vscode/settings.json > tmp && mv tmp .vscode/settings.json
 ```
 
 - Install the dependencies into the virtual environment
